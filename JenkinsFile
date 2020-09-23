@@ -1,0 +1,25 @@
+def WorkingDirectory = 'C:/Users/chris/Desktop/UFT'
+
+pipeline {
+    agent {
+        node {
+            label 'uft'
+        }
+    }
+    stages {
+        stage('Download Test Scenario') {
+            steps {
+                dir(WorkingDirectory) {
+                    git 'https://github.com/ChrisBotPlus/MicroFocus-UFT'
+                }
+            }
+        }
+        stage('Test Execution') {
+            steps {
+                dir(WorkingDirectory) {
+                    uftScenarioLoad archiveTestResultsMode: 'ALWAYS_ARCHIVE_TEST_REPORT', fsUftRunMode: 'Fast', testPaths: '''MyFlightParameter'''
+                }
+            }
+        }
+    }
+}
