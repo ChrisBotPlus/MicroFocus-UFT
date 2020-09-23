@@ -1,4 +1,4 @@
-def WorkingDirectory = 'C:/Users/chris.chan/Desktop/UFT'
+def WorkingDirectory = 'C:/Users/chris.chan/Desktop/MF-UFT'
 
 pipeline {
     agent {
